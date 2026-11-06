@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Safari のタブ一覧取得と対象ページの制御を行うために使用します。</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>再生中の音声を解析して必要な場面を検出するために使用します。</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>再生中の音声をオンデバイスで文字起こししてキーワード検出するために使用します。</string>
+	<key>SFSafariWebExtensionConverterVersion</key>
+	<string>26.2</string>
+</dict>
+</plist>

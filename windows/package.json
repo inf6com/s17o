@@ -1,0 +1,15 @@
+{
+  "name": "s17o-windows",
+  "productName": "s17o",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Windows desktop build of s17o using Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check main.js && node --check preload.js && node --check renderer.js"
+  },
+  "devDependencies": {
+    "electron": "^35.7.4"
+  }
+}

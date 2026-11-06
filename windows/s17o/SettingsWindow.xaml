@@ -1,0 +1,61 @@
+<Window x:Class="s17o.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="設定" Width="640" Height="780" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="16" x:Name="Root">
+
+            <!-- 自動化 -->
+            <GroupBox Header="自動化" Margin="0,0,0,12">
+                <StackPanel Margin="4">
+                    <TextBlock Text="カレンダー / ターゲット URL" FontSize="11" Foreground="Gray"/>
+                    <TextBox x:Name="AutoUrlBox" Margin="0,2,0,8" TextChanged="OnAutoUrlChanged"/>
+
+                    <TextBlock Text="開始時刻" FontSize="11" Foreground="Gray"/>
+                    <DatePicker x:Name="StartDatePicker" Margin="0,2,0,4" SelectedDateChanged="OnStartDateChanged"/>
+                    <TextBox x:Name="StartTimeBox" Margin="0,2,0,8" TextChanged="OnStartTimeChanged"/>
+
+                    <CheckBox x:Name="AutoOpenCheck"   Content="指定時刻にブラウザを開く"          Margin="0,2" Click="OnToggleChanged"/>
+                    <CheckBox x:Name="AutoStartCheck"  Content="指定時刻に監視を開始"              Margin="0,2" Click="OnToggleChanged"/>
+                    <CheckBox x:Name="AutoSoundCheck"  Content="打者・次打者・投手でキーワード一致時に自動ミュート解除" Margin="0,2" Click="OnToggleChanged"/>
+                    <CheckBox x:Name="AutoFrontCheck"  Content="打者・次打者・投手でキーワード一致時にブラウザを前面表示" Margin="0,2" Click="OnToggleChanged"/>
+
+                    <WrapPanel Margin="0,8,0,0">
+                        <Button Content="今すぐ URL を開く" Click="OnOpenNowClick" Margin="0,0,6,0"/>
+                        <Button Content="今すぐ自動実行"    Click="OnRunNowClick"/>
+                    </WrapPanel>
+
+                    <TextBlock x:Name="AutoStatusText" FontSize="11" Foreground="Gray" Margin="0,6,0,0"/>
+                    <TextBlock x:Name="CalendarStatusText" FontSize="11" Foreground="Gray"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- 権限と状態 -->
+            <GroupBox Header="権限と状態" Margin="0,0,0,12">
+                <ItemsControl x:Name="PermissionList" Margin="4"/>
+            </GroupBox>
+
+            <!-- プロファイル -->
+            <GroupBox Header="プロファイル" Margin="0,0,0,12">
+                <ItemsControl x:Name="ProfileList" Margin="4"/>
+            </GroupBox>
+
+            <!-- ブラウザ詳細 -->
+            <GroupBox Header="ブラウザ詳細" Margin="0,0,0,12">
+                <ItemsControl x:Name="BrowserList" Margin="4"/>
+            </GroupBox>
+
+            <!-- 音声詳細 -->
+            <GroupBox Header="音声詳細" Margin="0,0,0,12">
+                <ItemsControl x:Name="AudioList" Margin="4"/>
+            </GroupBox>
+
+            <!-- 一致履歴 -->
+            <GroupBox Header="一致履歴" Margin="0,0,0,12">
+                <ItemsControl x:Name="MatchList" Margin="4"/>
+            </GroupBox>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>

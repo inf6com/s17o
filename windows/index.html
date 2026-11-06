@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';" />
+    <title>s17o Windows</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --blue: #0057B8;
+        --bg: #f4f7fb;
+        --card: #ffffff;
+        --border: rgba(0, 0, 0, 0.1);
+        --text: #0d1b2a;
+        --muted: #6c7a89;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .shell {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      h1 {
+        margin: 0 0 16px;
+        color: var(--blue);
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px;
+        margin-bottom: 16px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      label.block {
+        display: block;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      textarea, input[type="text"], input[type="datetime-local"] {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font: inherit;
+        background: white;
+      }
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .toggles {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font: inherit;
+        cursor: pointer;
+        background: var(--blue);
+        color: white;
+      }
+      button.secondary {
+        background: #dde7f5;
+        color: #183a66;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .status {
+        border-radius: 14px;
+        background: #eef3fa;
+        padding: 12px;
+        white-space: pre-wrap;
+        min-height: 84px;
+      }
+      .status strong {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      @media (max-width: 720px) {
+        .grid, .status-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <h1>s17o Windows</h1>
+
+      <section class="card">
+        <label class="block" for="keywordsText">キーワード</label>
+        <textarea id="keywordsText"></textarea>
+
+        <div class="grid" style="margin-top: 14px;">
+          <div>
+            <label class="block" for="automationURLText">対象 URL / MLB カレンダー URL</label>
+            <input id="automationURLText" type="text" placeholder="https://www.mlb.com/..." />
+          </div>
+          <div>
+            <label class="block" for="automationStartAt">開始時刻</label>
+            <input id="automationStartAt" type="datetime-local" />
+          </div>
+        </div>
+
+        <div class="toggles">
+          <label><input id="autoOpenTargetPage" type="checkbox" /> 指定時刻に対象ページを開く</label>
+          <label><input id="autoStartMonitoringAtSchedule" type="checkbox" /> 指定時刻に監視を開始</label>
+          <label><input id="autoPageAudioControl" type="checkbox" /> 打者・次打者・投手でキーワード一致時にページ音声を自動ON</label>
+        </div>
+
+        <div class="actions">
+          <button id="saveButton" class="secondary">保存</button>
+          <button id="openNowButton" class="secondary">今すぐ URL を開く</button>
+          <button id="runNowButton" class="secondary">今すぐ自動実行</button>
+          <button id="startMonitoringButton">監視開始</button>
+          <button id="stopMonitoringButton" class="secondary">停止</button>
+        </div>
+      </section>
+
+      <section class="card status-grid">
+        <div class="status"><strong>状態</strong><span id="statusMessage"></span></div>
+        <div class="status"><strong>自動化</strong><span id="automationStatus"></span></div>
+        <div class="status"><strong>カレンダー読取</strong><span id="calendarStatus"></span></div>
+        <div class="status"><strong>ページ音声</strong><span id="soundStatus"></span></div>
+        <div class="status"><strong>監視ページ</strong><span id="monitoredPage"></span></div>
+        <div class="status"><strong>要約</strong><span id="pageSummary"></span></div>
+        <div class="status"><strong>野球文脈</strong><span id="baseballSummary"></span></div>
+        <div class="status"><strong>最新一致</strong><span id="lastMatch"></span></div>
+        <div class="status" style="grid-column: 1 / -1;"><strong>エラー</strong><span id="lastError"></span></div>
+      </section>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

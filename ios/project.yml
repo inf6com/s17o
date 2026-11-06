@@ -1,0 +1,52 @@
+name: s17o-ios
+options:
+  bundleIdPrefix: com.s17o
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "16"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    ENABLE_HARDENED_RUNTIME: YES
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+targets:
+  s17o-ios:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.1"
+    sources:
+      - path: s17o
+        type: group
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.s17o.ios
+        PRODUCT_NAME: s17o
+        INFOPLIST_FILE: s17o/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_EMIT_LOC_STRINGS: YES
+        DEVELOPMENT_TEAM: ""
+    entitlements:
+      path: s17o/s17o.entitlements
+    info:
+      path: s17o/Info.plist
+      properties:
+        CFBundleDisplayName: s17o
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        UILaunchScreen:
+          UIColorName: ""
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSUserNotificationsUsageDescription: "s17o はキーワード一致時に通知を送ります。"

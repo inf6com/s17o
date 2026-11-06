@@ -1,0 +1,9 @@
+DerivedData/
+.build/
+*.xcresult/
+*.mlpackage/
+*.mlmodelc/
+*.bin
+*.zip
+.env
+.env.*

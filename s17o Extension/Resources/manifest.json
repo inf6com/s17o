@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "s17o",
+  "version": "0.1.0",
+  "description": "Collects visible page context for s17o.",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "nativeMessaging",
+    "tabs",
+    "activeTab"
+  ]
+}
